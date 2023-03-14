@@ -20,7 +20,6 @@ export class CarsController {
   constructor() {
     console.log('cars loaded')
     // this.getAllCars()
-    this.viewCars()
     appState.on('cars', _drawCars)
     // _drawCars() this will not draw the cars even though it happens after the get call, because it still runs before the get calls response 
   }

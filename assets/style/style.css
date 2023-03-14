@@ -9,3 +9,11 @@
 .form-control {
   background-color: whitesmoke !important;
 }
+
+.product-img {
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  height: 25vh;
+  object-fit: cover;
+  object-position: center;
+}

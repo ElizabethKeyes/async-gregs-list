@@ -16,20 +16,15 @@ export class Car {
   get CarCard() {
     return `
     <div class="col-6 col-md-4">
-      <div class="bg-light rounded elevation-5">
-        <img class="img-fluid" src="${this.imgUrl}" alt="${this.make} ${this.model}">
+      <div class="card product-card">
+        <img class="img-fluid product-img" src="${this.imgUrl}" alt="${this.make} ${this.model}">
         <h5 class="p-2 text-center text-dark">${this.make} | ${this.model} | ${this.year}</h5>
-        <p class="text-warning">${this.AvgMileage}</p>
-        <button class="btn btn-danger" onclick="app.carsController.deleteCar('${this.id}')"> <i class="mdi mdi-delete-forever"></i></button>
-        <button class="btn btn-warning" onclick="app.carsController.openEditCarForm('${this.id}')" data-bs-toggle="modal"
+        <button class="btn btn-danger m-1" onclick="app.carsController.deleteCar('${this.id}')"> <i class="mdi mdi-delete-forever"></i></button>
+        <button class="btn btn-warning m-1" onclick="app.carsController.openEditCarForm('${this.id}')" data-bs-toggle="modal"
         data-bs-target="#edit-modal"><i class="mdi mdi-pen"></i></button>
       </div>
     </div>
     `
-  }
-
-  get AvgMileage() {
-    return (2023 - this.year) * 40000
   }
 
   static CarForm() {
@@ -132,7 +127,7 @@ export class Car {
       </div>
       <div class="mb-2 col-4">
         <label for="year">Year</label>
-        <input type="number" name="year" id="year" class="form-control" required min="2020" max="3000"
+        <input type="number" name="year" id="year" class="form-control" required max="2023"
           value="${car.year || 2023}">
       </div>
       <div class="mb-2 col-12">
