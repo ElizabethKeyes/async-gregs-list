@@ -42,7 +42,7 @@ export class HousesController {
 
   }
 
-  deleteHouse() {
-    console.log('placeholder, still need to write this function');
+  async deleteHouse(houseId) {
+    await housesService.deleteHouse(houseId)
   }
 }

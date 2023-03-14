@@ -1,5 +1,7 @@
 import { appState } from "../AppState.js";
+import { Job } from "../Models/Job.js";
 import { jobsService } from "../Services/JobsService.js";
+import { getFormData } from "../Utils/FormHandler.js";
 import { Pop } from "../Utils/Pop.js";
 import { setHTML } from "../Utils/Writer.js";
 
@@ -8,6 +10,8 @@ function _DrawJobs() {
   let template = ``
   jobs.forEach(j => template += j.JobCard)
   setHTML('listings', template)
+  setHTML('form', Job.JobForm())
+  document.getElementById('create-button').classList.remove('d-none')
 }
 
 export class JobsController {
@@ -25,9 +29,19 @@ export class JobsController {
     }
   }
 
-  deleteJob(jobId) {
-    // TODO write this function
-    console.log('need to write this function still.');
+  async createJob() {
+    window.event.preventDefault()
+    let form = window.event.target
+    let formData = getFormData(form)
+    await jobsService.createJob(formData)
+    // @ts-ignore
+    form.reset()
+    // @ts-ignore
+    bootstrap.Modal.getOrCreateInstance('#create-modal').hide()
+  }
+
+  async deleteJob(jobId) {
+    await jobsService.deleteJob(jobId)
   }
 
 }

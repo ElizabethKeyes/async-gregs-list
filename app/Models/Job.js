@@ -24,4 +24,35 @@ export class Job {
     `
     // TODO add the edit button to this card when ready for it.
   }
+
+  static JobForm() {
+    return `
+    <form onsubmit="app.jobsController.createJob()" class="row ms-1 bg-white rounded">
+    <h3>Post a Job</h3>
+    <div class="mb-2 col-4">
+      <label for="jobTitle">Job Title</label>
+      <input type="text" name="jobTitle" id="jobTitle" class="form-control" min="1" required>
+    </div>
+    <div class="col-4 mb-2">
+    <label for="company">Company</label>
+    <input type="text" name="company" id="company" class="form-control" min="1" required>
+    </div>
+    <div class="mb-2 col-4">
+      <label for="hours">Weekly Hours</label>
+      <input type="number" name="hours" id="hours" class="form-control" max="168" required>
+    </div>
+    <div class="col-6 mb-2">
+      <label for="rate">Hourly Rate</label>
+      <input type="number" name="rate" id="rate" class="form-control" min="1" required>
+    </div>
+    <div class="col-12 mb-2">
+      <label for="description">Description</label>
+      <input type="text" name="description" id="description" class="form-control" maxlength="100">
+    </div>
+    <div class="col-12 mt-2 text-end">
+      <button class="btn" type="reset" data-bs-toggle="modal" data-bs-target="#create-modal">Cancel</button>
+      <button class="btn btn-primary">Submit</button>
+    </div>
+  </form>`
+  }
 }

@@ -20,6 +20,13 @@ class HousesService {
     appState.houses = res.data.map(h => new House(h))
   }
 
+  async deleteHouse(houseId) {
+    let res = await sandbox.delete(`houses/${houseId}`)
+    console.log('deleting house', res.data);
+    appState.houses = appState.houses.filter(h => h.id != houseId)
+
+  }
+
 }
 
 export const housesService = new HousesService()
