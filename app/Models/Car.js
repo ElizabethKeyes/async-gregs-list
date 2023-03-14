@@ -16,9 +16,10 @@ export class Car {
   get CarCard() {
     return `
     <div class="col-6 col-md-4">
-      <div class="card product-card">
+      <div class="card product-card text-center text-dark">
         <img class="img-fluid product-img" src="${this.imgUrl}" alt="${this.make} ${this.model}">
-        <h5 class="p-2 text-center text-dark">${this.make} | ${this.model} | ${this.year}</h5>
+        <h5 class="p-2">${this.make} | ${this.model} | ${this.year}</h5>
+        <p>${this.description}</p>
         <button class="btn btn-danger m-1" onclick="app.carsController.deleteCar('${this.id}')"> <i class="mdi mdi-delete-forever"></i></button>
         <button class="btn btn-warning m-1" onclick="app.carsController.openEditCarForm('${this.id}')" data-bs-toggle="modal"
         data-bs-target="#edit-modal"><i class="mdi mdi-pen"></i></button>
@@ -148,8 +149,8 @@ export class Car {
         <input type="number" name="price" id="price" class="form-control" required min="1"  value="${car.price || 1}">
       </div>
       <div class="text-end mt-2">
-        <button class="btn" type="button">cancel</button>
-        <button class="btn btn-primary" type="submit">submit</button>
+        <button class="btn" type="reset" data-bs-toggle="modal" data-bs-target="#create-modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Submit</button>
       </div>
     </form>`
   }

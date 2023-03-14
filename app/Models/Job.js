@@ -17,6 +17,7 @@ export class Job {
         <h4 class="pt-2">${this.jobTitle}</h4>
         <h5>${this.company}</h5>
         <h6>${this.hours} Hours per Week</h6>
+        <p>${this.description}</p>
         <button class="btn btn-danger m-1" onclick="app.jobsController.deleteJob('${this.id}')"> <i class="mdi mdi-delete-forever"></i></button>
       </div>
     </div>

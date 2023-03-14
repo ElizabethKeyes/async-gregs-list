@@ -8,11 +8,16 @@ const sandbox = axios.create({
 })
 
 class HousesService {
+  async createHouse(formData) {
+    const res = await sandbox.post('houses', formData)
+    const newHouse = new House(res.data)
+    appState.houses.push(newHouse)
+    appState.emit('houses')
+  }
 
   async viewHouses() {
     let res = await sandbox.get('houses')
     appState.houses = res.data.map(h => new House(h))
-    console.log(appState.houses, 'all houses in appstate');
   }
 
 }
