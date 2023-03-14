@@ -13,6 +13,7 @@ function _drawCars() {
   let template = ''
   cars.forEach(car => template += car.CarCard)
   setHTML('listings', template)
+  document.getElementById('create-button').classList.remove('d-none')
 }
 
 

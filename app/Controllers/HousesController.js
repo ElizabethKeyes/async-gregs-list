@@ -9,12 +9,12 @@ function _DrawHouses() {
   let template = ``
   houses.forEach(h => template += h.HouseCard)
   setHTML('listings', template)
+  document.getElementById('create-button').classList.remove('d-none')
 }
 
 
 export class HousesController {
   constructor() {
-    // this.viewHouses()
     appState.on('houses', _DrawHouses)
   }
 
