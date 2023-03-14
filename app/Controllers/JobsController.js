@@ -41,7 +41,12 @@ export class JobsController {
   }
 
   async deleteJob(jobId) {
-    await jobsService.deleteJob(jobId)
+    try {
+      await jobsService.deleteJob(jobId)
+    } catch (error) {
+      console.error(error)
+      Pop.error(error)
+    }
   }
 
 }
