@@ -14,7 +14,7 @@ function _DrawHouses() {
 
 export class HousesController {
   constructor() {
-    this.viewHouses()
+    // this.viewHouses()
     appState.on('houses', _DrawHouses)
   }
 
