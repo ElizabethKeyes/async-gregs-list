@@ -28,6 +28,13 @@ class JobsService {
     appState.jobs = appState.jobs.filter(j => j.id != jobId)
   }
 
+  async updateJob(jobId, updateData) {
+    let res = await sandbox.put(`jobs/${jobId}`, updateData)
+    let jobIndex = appState.jobs.findIndex(j => j.id == jobId)
+    appState.jobs.splice(jobIndex, 1, new Job(updateData))
+    appState.emit('jobs')
+  }
+
 }
 
 export const jobsService = new JobsService()

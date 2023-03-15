@@ -3,7 +3,7 @@ import { Job } from "../Models/Job.js";
 import { jobsService } from "../Services/JobsService.js";
 import { getFormData } from "../Utils/FormHandler.js";
 import { Pop } from "../Utils/Pop.js";
-import { setHTML } from "../Utils/Writer.js";
+import { setHTML, setText } from "../Utils/Writer.js";
 
 function _DrawJobs() {
   let jobs = appState.jobs
@@ -51,10 +51,18 @@ export class JobsController {
 
   openEditJobForm(jobId) {
     console.log('opening job form', jobId);
-    // TODO create (dynamic?) edit job form and draw to the page
+    let job = appState.jobs.find(j => j.id == jobId)
+    setHTML('edit-form', Job.EditJobForm(job))
+    // TODO create dynamic edit job form
   }
 
   async updateJob(jobId) {
+    window.event.preventDefault()
+    let form = window.event.target
+    let updateData = getFormData(form)
+    // @ts-ignore
+    bootstrap.Modal.getOrCreateInstance('#edit-modal').hide()
+    await jobsService.updateJob(jobId, updateData)
     // TODO create update job function and test
     // don't forget to pass both the jobId and editData to the service, as well as use trycatch
   }
