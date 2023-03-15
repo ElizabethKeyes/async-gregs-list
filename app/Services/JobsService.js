@@ -15,7 +15,6 @@ class JobsService {
   }
 
   async createJob(formData) {
-    console.log('creating job in the service', formData);
     let res = await sandbox.post('jobs', formData)
     let newJob = new Job(formData)
     appState.jobs.push(newJob)
@@ -24,7 +23,6 @@ class JobsService {
 
   async deleteJob(jobId) {
     let res = await sandbox.delete(`jobs/${jobId}`)
-    console.log('deleting job in service', res.data);
     appState.jobs = appState.jobs.filter(j => j.id != jobId)
   }
 

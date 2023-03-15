@@ -10,13 +10,12 @@ function _DrawJobs() {
   let template = ``
   jobs.forEach(j => template += j.JobCard)
   setHTML('listings', template)
-  setHTML('form', Job.JobForm())
+  setHTML('form', Job.DynamicJobForm())
   document.getElementById('create-button').classList.remove('d-none')
 }
 
 export class JobsController {
   constructor() {
-    console.log('hello from jobs controller');
     appState.on('jobs', _DrawJobs)
   }
 
@@ -50,10 +49,8 @@ export class JobsController {
   }
 
   openEditJobForm(jobId) {
-    console.log('opening job form', jobId);
     let job = appState.jobs.find(j => j.id == jobId)
-    setHTML('edit-form', Job.EditJobForm(job))
-    // TODO create dynamic edit job form
+    setHTML('edit-form', Job.DynamicJobForm(job))
   }
 
   async updateJob(jobId) {
@@ -63,8 +60,6 @@ export class JobsController {
     // @ts-ignore
     bootstrap.Modal.getOrCreateInstance('#edit-modal').hide()
     await jobsService.updateJob(jobId, updateData)
-    // TODO create update job function and test
-    // don't forget to pass both the jobId and editData to the service, as well as use trycatch
   }
 
 }

@@ -11,7 +11,7 @@ function _DrawHouses() {
   let template = ``
   houses.forEach(h => template += h.HouseCard)
   setHTML('listings', template)
-  setHTML('form', House.HouseForm())
+  setHTML('form', House.DynamicHouseForm())
   document.getElementById('create-button').classList.remove('d-none')
 }
 
@@ -52,9 +52,8 @@ export class HousesController {
   }
 
   openEditHouseForm(houseId) {
-    console.log('opening edit house form', houseId);
     let house = appState.houses.find(h => h.id == houseId)
-    setHTML('edit-form', House.EditHouseForm(house))
+    setHTML('edit-form', House.DynamicHouseForm(house))
   }
 
   async updateHouse(houseId) {

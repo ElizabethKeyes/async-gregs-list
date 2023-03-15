@@ -26,63 +26,31 @@ export class Job {
       </div>
     </div>
     `
-    // TODO add the edit button to this card when ready for it.
   }
 
-  static JobForm() {
+  static DynamicJobForm(job = {}) {
     return `
-    <form onsubmit="app.jobsController.createJob()" class="row ms-1 bg-white rounded">
-    <h3>Post a Job</h3>
+    <form onsubmit="app.jobsController.${job.id ? `updateJob(${job.id})` : `createJob()`}" class="row ms-1 bg-white rounded">
+    <h3>${job.id ? 'Edit a Job' : 'Post a Job'}</h3>
     <div class="mb-2 col-6">
       <label for="jobTitle">Job Title</label>
-      <input type="text" name="jobTitle" id="jobTitle" class="form-control" min="1" required>
+      <input value="${job.jobTitle || ''}" type="text" name="jobTitle" id="jobTitle" class="form-control" min="1" required>
     </div>
     <div class="col-6 mb-2">
     <label for="company">Company</label>
-    <input type="text" name="company" id="company" class="form-control" min="1" required>
+    <input value="${job.company || ''}" type="text" name="company" id="company" class="form-control" min="1" required>
     </div>
     <div class="mb-2 col-6">
       <label for="hours">Weekly Hours</label>
-      <input type="number" name="hours" id="hours" class="form-control" max="168" required>
+      <input value="${job.hours || ''}" type="number" name="hours" id="hours" class="form-control" max="168" required>
     </div>
     <div class="col-6 mb-2">
       <label for="rate">Hourly Rate</label>
-      <input type="number" name="rate" id="rate" class="form-control" min="1" required>
+      <input value="${job.rate || ''}" type="number" name="rate" id="rate" class="form-control" min="1" required>
     </div>
     <div class="col-12 mb-2">
       <label for="description">Description</label>
-      <input type="text" name="description" id="description" class="form-control" maxlength="100">
-    </div>
-    <div class="col-12 mt-2 text-end">
-      <button class="btn" type="reset" data-bs-toggle="modal" data-bs-target="#create-modal">Cancel</button>
-      <button class="btn btn-primary">Submit</button>
-    </div>
-  </form>`
-  }
-
-  static EditJobForm(job) {
-    return `
-    <form onsubmit="app.jobsController.updateJob('${job.id}')" class="row ms-1 bg-white rounded">
-    <h3>Post a Job</h3>
-    <div class="mb-2 col-6">
-      <label for="jobTitle">Job Title</label>
-      <input value="${job.jobTitle}" type="text" name="jobTitle" id="jobTitle" class="form-control" min="1" required>
-    </div>
-    <div class="col-6 mb-2">
-      <label for="company">Company</label>
-      <input value="${job.company}" type="text" name="company" id="company" class="form-control" min="1" required>
-    </div>
-    <div class="mb-2 col-6">
-      <label for="hours">Weekly Hours</label>
-      <input value="${job.hours}" type="number" name="hours" id="hours" class="form-control" max="168" required>
-    </div>
-    <div class="col-6 mb-2">
-      <label for="rate">Hourly Rate</label>
-      <input value="${job.rate}" type="number" name="rate" id="rate" class="form-control" min="1" required>
-    </div>
-    <div class="col-12 mb-2">
-      <label for="description">Description</label>
-      <input value="${job.description}" type="text" name="description" id="description" class="form-control" maxlength="100">
+      <input value="${job.description || ''}" type="text" name="description" id="description" class="form-control" maxlength="100">
     </div>
     <div class="col-12 mt-2 text-end">
       <button class="btn" type="reset" data-bs-toggle="modal" data-bs-target="#create-modal">Cancel</button>
