@@ -49,4 +49,14 @@ export class JobsController {
     }
   }
 
+  openEditJobForm(jobId) {
+    console.log('opening job form', jobId);
+    // TODO create (dynamic?) edit job form and draw to the page
+  }
+
+  async updateJob(jobId) {
+    // TODO create update job function and test
+    // don't forget to pass both the jobId and editData to the service, as well as use trycatch
+  }
+
 }

@@ -1,5 +1,4 @@
 
-
 export class House {
   constructor(data) {
     this.id = data.id
@@ -15,16 +14,18 @@ export class House {
   get HouseCard() {
     return `
     <div class="col-6 col-md-4">
-    <div class="card product-card text-center text-dark">
-      <img class="img-fluid product-img" src="${this.imgUrl}" alt="${this.levels} story house">
-      <h6 class="p-2">${this.bedrooms} Bedrooms | ${this.bathrooms} Bathrooms | Built in ${this.year}</h6>
-      <p>${this.description}</p>
-      <button class="btn btn-danger m-1" onclick="app.housesController.deleteHouse('${this.id}')"> <i class="mdi mdi-delete-forever"></i></button>
-      <button class="btn btn-warning m-1" onclick="app.housesController.openEditHouseForm('${this.id}')" data-bs-toggle="modal"
-      data-bs-target="#edit-modal"><i class="mdi mdi-pen"></i></button>
+      <div class="row m-1 card product-card text-center text-dark">
+        <div class="col-12 p-0">
+          <img class="img-fluid product-img" src="${this.imgUrl}" alt="${this.levels} story house">
+          <h6 class="p-2">${this.bedrooms} Bedrooms | ${this.bathrooms} Bathrooms | Built in ${this.year}</h6>
+          <p>${this.description}</p>
+        </div>
+        <div class="col-6 align-self-end text-end">
+          <button class="btn btn-danger m-1" onclick="app.housesController.deleteHouse('${this.id}')"> <i class="mdi mdi-delete-forever"></i></button>
+          <button class="btn btn-warning m-1" onclick="app.housesController.openEditHouseForm('${this.id}')" data-bs-toggle="modal" data-bs-target="#edit-modal"><i class="mdi mdi-pen"></i></button>
+        </div>
       </div>
-      </div>
-      `
+    </div>`
   }
 
 

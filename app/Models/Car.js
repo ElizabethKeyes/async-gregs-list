@@ -16,13 +16,16 @@ export class Car {
   get CarCard() {
     return `
     <div class="col-6 col-md-4">
-      <div class="card product-card text-center text-dark">
-        <img class="img-fluid product-img" src="${this.imgUrl}" alt="${this.make} ${this.model}">
-        <h5 class="p-2">${this.make} | ${this.model} | ${this.year}</h5>
-        <p>${this.description}</p>
-        <button class="btn btn-danger m-1" onclick="app.carsController.deleteCar('${this.id}')"> <i class="mdi mdi-delete-forever"></i></button>
-        <button class="btn btn-warning m-1" onclick="app.carsController.openEditCarForm('${this.id}')" data-bs-toggle="modal"
-        data-bs-target="#edit-modal"><i class="mdi mdi-pen"></i></button>
+      <div class="row m-1 card product-card text-center text-dark">
+        <div class="col-12 p-0">
+          <img class="img-fluid product-img" src="${this.imgUrl}" alt="${this.make} ${this.model}">
+          <h5 class="p-2">${this.make} | ${this.model} | ${this.year}</h5>
+          <p>${this.description}</p>
+        </div>
+        <div class="col-6 align-self-end text-end">
+          <button class="btn btn-danger m-1" onclick="app.carsController.deleteCar('${this.id}')"> <i class="mdi mdi-delete-forever"></i></button>
+          <button class="btn btn-warning m-1" onclick="app.carsController.openEditCarForm('${this.id}')" data-bs-toggle="modal" data-bs-target="#edit-modal"><i class="mdi mdi-pen"></i></button>
+        </div>
       </div>
     </div>
     `
